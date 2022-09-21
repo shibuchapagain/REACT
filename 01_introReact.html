@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HI, SHIVA</title>
+  </head>
+
+  <body>
+    <div id="root"></div>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@16/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+      //   // WRITE THE CODE FOR RUN
+      const rootElement = document.getElementById("root");
+      //   //   console.log(rootElement);
+      //   const JSXElement = <h2>HI, THERE </h2>;
+      //   ReactDOM.render(JSXElement, rootElement);
+
+      // 2) JSX ELEMENT (header)
+      const headerStyle = {
+        border: "1px solid blue",
+        backgroundColor: "#f1f1ff",
+        padding: "0.5rem 1rem",
+      };
+      const name = "SHIVA CHAPAGAIN";
+      const contact = "9864423595";
+      const email = "shibuchapagain12@gmail.com";
+      const address = "BALKUMRI, LALITPUR";
+      const header = (
+        <header style={headerStyle}>
+          <h4>NAME: {name}</h4>
+          <h4>CONTACT: {contact}</h4>
+          <h4>{email}</h4>
+          <h4>ADDRESS: {address}</h4>
+        </header>
+      );
+      //   ReactDOM.render(header, rootElement);
+
+      // JSX ELEMENT (main)
+      const mainStyle = {
+        padding: "0.5rem 1rem",
+        backgroundColor: "#f2f2f2",
+        color: "black",
+      };
+      const firstNum = 8;
+      const secondNum = 9;
+
+      const main = (
+        <main style={mainStyle}>
+          <p> KNOWLEDGE AND SKILLS </p>
+          <ul>
+            <li> JAVASCRIPT </li>
+            <li> NODEJS </li>
+            <li> REACTJS </li>
+            <li>
+              {firstNum}+{secondNum}={firstNum + secondNum}
+            </li>
+          </ul>
+        </main>
+      );
+
+      // JSX ELEMENT (footer)
+      const footerStyle = {
+        backgroundColor: "#00172D",
+        color: "white",
+        padding: "3px ",
+        textAlign: "center",
+      };
+      const footer = (
+        <footer style={footerStyle}>
+          <p>
+            {" "}
+            Copyright by: <i>shibuchapagain12@gmail.com</i>
+          </p>
+        </footer>
+      );
+
+      // JSX ELEMENT WHICH CONTAINS ALL .. ALSO CALLED CONTAINER OR PARENT...
+      const app = (
+        <div>
+          {header}
+          {main}
+          {footer}
+        </div>
+      );
+      // FOR DISPLAY
+      //   ReactDOM.render(app, rootElement);
+
+      // INPUT FIELDS
+      const title = <h1 className="title"> ALL ABOUT SHIBU CHAPAGAIN </h1>;
+      const inputField = (
+        <div>
+          <lable>FIRST NAME: </lable>
+          <input type="text" id="firstName" placeholder="First Name" />
+        </div>
+      );
+      const all = (
+        <div>
+          {title}
+          {inputField}
+        </div>
+      );
+      //   ReactDOM.render(all, rootElement);
+
+      // JSX WITH THE ARRAY:
+      const skills = ["BOOTSTRAP", "JAVASCRIPT", "NODEJS", "REACTJS"];
+      //   const skillsFormatted = skills.map((skill) => <li>{skill}</li>);
+      const skillsFormatted = skills.map((skill) => (
+        <li key={skill}>{skill}</li>
+      ));
+      const array = (
+        <div>
+          <p> THESE ARE THE PROGRAMMING SKILLS </p>
+          <ul>{skillsFormatted} </ul>
+        </div>
+      );
+      ReactDOM.render(array, rootElement);
+    </script>
+  </body>
+</html>
