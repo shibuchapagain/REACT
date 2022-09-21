@@ -1,5 +1,5 @@
-import React from "react";
-import ReactDOM from "react-dom";
+// import React from "react";
+// import ReactDOM from "react-dom";
 // import External from "./App";
 
 // MAP-LIST-KEYS:
@@ -184,44 +184,121 @@ import ReactDOM from "react-dom";
 // };
 
 ///////////////////////////////////////////////////////////////////
-const countries = [
-  { name: "Nepal", city: "Kathmandu" },
-  { name: "Finland", city: "Helsinki" },
-  { name: "Sweden", city: "Stockholm" },
-  { name: "Denmark", city: "Copenhagen" },
-  { name: "Norway", city: "Oslo" },
-  { name: "Iceland", city: "Reykjavík" },
+// const countries = [
+//   { name: "Nepal", city: "Kathmandu" },
+//   { name: "Finland", city: "Helsinki" },
+//   { name: "Sweden", city: "Stockholm" },
+//   { name: "Denmark", city: "Copenhagen" },
+//   { name: "Norway", city: "Oslo" },
+//   { name: "Iceland", city: "Reykjavík" },
+// ];
+
+// const Country = (props) => {
+//   const { name, city } = props.country;
+//   return (
+//     <div>
+//       <h4>
+//         {" "}
+//         {name} : {city}{" "}
+//       </h4>
+//     </div>
+//   );
+// };
+
+// const Countries = (props) => {
+//   const countries = props.data;
+//   const countryList = countries.map((country) => (
+//     <Country key={country.name} country={country} />
+//   ));
+//   return countryList;
+// };
+
+// const App = () => {
+//   return (
+//     <div>
+//       <Countries data={countries} />
+//     </div>
+//   );
+// };
+
+// ////////////////////////////////////////////////////////////////////////////
+// // FOR EXECUTE / RUN:
+// const rootElement = document.getElementById("root");
+// ReactDOM.render(<App />, rootElement);
+
+////////////////////////////////////////////////////////////////////////////////////
+// PRACTICE SECTION --> API...
+
+import React, { useState } from "react";
+import ReactDOM from "react-dom/client";
+
+const info = [
+  {
+    name: "shiva",
+    address: { pernament: "pkr", temporary: "HDM" },
+    faculty: "BE",
+  },
+  {
+    name: "jonas",
+    address: { pernament: "avc", temporary: "DDM" },
+    faculty: "BEK",
+  },
+  {
+    name: "matilda",
+    address: { pernament: "kkr", temporary: "AATM" },
+    faculty: "ABE",
+  },
+  {
+    name: "john",
+    address: { pernament: "akr", temporary: "KYYM" },
+    faculty: "BED",
+  },
+  {
+    name: "paraboy",
+    address: { pernament: "ekr", temporary: "KEETM" },
+    faculty: "TBE",
+  },
 ];
 
-const Country = (props) => {
-  const { name, city } = props.country;
-  return (
-    <div>
-      <h4>
-        {" "}
-        {name} : {city}{" "}
-      </h4>
-    </div>
-  );
-};
-
-const Countries = (props) => {
-  const countries = props.data;
-  const countryList = countries.map((country) => (
-    <Country key={country.name} country={country} />
-  ));
-  return countryList;
-};
-
 const App = () => {
+  const [data, setData] = useState([]);
+
+  const clickLoad = () => {
+    setData(info);
+  };
+
+  const User = (props) => {
+    const {
+      name,
+      address: { pernament, temporary },
+      faculty,
+    } = props.props;
+    return (
+      <div>
+        <h4>
+          {" "}
+          NAME: {name}, ADDRESS: {pernament} and {temporary}, FACULTY: {faculty}{" "}
+        </h4>
+      </div>
+    );
+  };
+
+  const Users = (props) => {
+    const users = props.props;
+    const userList = users.map((user) => <User props={user} />);
+    return userList;
+  };
+
   return (
     <div>
-      <Countries data={countries} />
+      <h2>SHIVA</h2> <br />
+      <button onClick={clickLoad}>LOAD DATA</button>
+      <Users props={data} />
     </div>
   );
 };
 
-////////////////////////////////////////////////////////////////////////////
-// FOR EXECUTE / RUN:
+// FOR RENDERING...
 const rootElement = document.getElementById("root");
-ReactDOM.render(<App />, rootElement);
+const root = ReactDOM.createRoot(rootElement);
+root.render(<App />);
