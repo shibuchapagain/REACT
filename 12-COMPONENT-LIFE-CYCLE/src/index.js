@@ -104,32 +104,33 @@ const App = () => {
 
   const length = data.length;
 
-  const renderCountries = (data) => {
-    let { capital, continents, population } = data;
+  const Country = (props) => {
+    const {
+      capital,
+      continents,
+      name: { common },
+      population,
+    } = props.props;
     return (
-      <div>
-        <h4>
-          {" "}
-          capital:: {capital[0]} : Continents:: {continents[0]} : population ::
-          {population}{" "}
-        </h4>
-      </div>
+      <h2>
+        {" "}
+        CAPITAL : {capital}, CONTINENTS : {continents}, COUNTRY NAME: {common}{" "}
+        POPULATION :{population}
+      </h2>
     );
   };
 
-  const Countries = (data) => {
-    const { country } = data;
-    const countryList = country.map((country) => (
-      <renderCountries data={country} />
-    ));
-    return countryList;
+  const Countries = (props) => {
+    const countries = props.props;
+    const countryList = countries.map((country) => <Country props={country} />);
+    return countryList.slice(0, 5);
   };
 
   return (
     <div>
       <h2>WELCOME TO API CALLING..</h2>
       <h2>there are {length} countries.</h2>
-      <renderCountries data={Countries} />
+      <Countries props={data} />
     </div>
   );
 };
